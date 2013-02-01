@@ -3,4 +3,36 @@
 <container xmlns="http://symfony.com/schema/dic/services"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="guzzle.cache.skip_revalidation.class">Guzzle\Plugin\Cache\SkipRevalidation</parameter>
+        <parameter key="guesswhere.guzzle.cache.always.class">Tasuk\GuessWhereBundle\Guzzle\Plugin\Cache\AlwaysCanCacheStrategy</parameter>
+        <parameter key="guesswhere.yahoo_api.class">Tasuk\GuessWhereBundle\YahooAPI</parameter>
+    </parameters>
+
+    <services>
+        <service id="guesswhere.guzzle.cache.always" class="%guesswhere.guzzle.cache.always.class%"/>
+        <service id="guesswhere.guzzle.cache.skip_revalidation" class="%guzzle.cache.skip_revalidation.class%"/>
+
+        <service id="guesswhere.guzzle.cache" class="%guzzle.plugin.cache.class%">
+            <argument type="collection">
+                <argument key="adapter" type="service" id="misd_guzzle.cache.doctrine.filesystem"/>
+                <argument key="can_cache" type="service" id="guesswhere.guzzle.cache.always"/>
+                <argument key="revalidation" type="service" id="guesswhere.guzzle.cache.skip_revalidation"/>
+            </argument>
+        </service>
+
+        <service id="guesswhere.yahoo.client" class="%guzzle.client.class%">
+            <tag name="guzzle.client"/>
+            <argument>http://where.yahooapis.com/v1/place/</argument>
+            <call method="addSubscriber">
+                <argument type="service" id="guesswhere.guzzle.cache"/>
+            </call>
+        </service>
+
+        <service id="guesswhere.yahoo_api" class="%guesswhere.yahoo_api.class%">
+            <argument type="service" id="guesswhere.yahoo.client" />
+            <argument>%guesswhere.yahoo_api_key%</argument>
+        </service>
+    </services>
 </container>
