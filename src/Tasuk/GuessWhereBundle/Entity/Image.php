@@ -23,9 +23,37 @@ class Image
     /**
      * @var string
      *
+     * @ORM\Column(type="string", length=20)
+     */
+    protected $owner;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=15)
+     */
+    protected $secret;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer")
+     */
+    protected $server;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer")
+     */
+    protected $farm;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255)
      */
-    protected $name;
+    protected $title;
 
     /**
      * @var Location
@@ -36,30 +64,10 @@ class Image
     protected $location;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $url;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $url_m;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $url_s;
-
-    /**
      * Set flickrid
      *
      * @param integer $flickrid
+     *
      * @return Image
      */
     public function setFlickrid($flickrid)
@@ -80,32 +88,130 @@ class Image
     }
 
     /**
-     * Set name
+     * Set owner
      *
-     * @param string $name
+     * @param string $owner
+     *
      * @return Image
      */
-    public function setName($name)
+    public function setOwner($owner)
     {
-        $this->name = $name;
+        $this->owner = $owner;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get owner
      *
      * @return string
      */
-    public function getName()
+    public function getOwner()
     {
-        return $this->name;
+        return $this->owner;
+    }
+
+    /**
+     * Set secret
+     *
+     * @param string $secret
+     *
+     * @return Image
+     */
+    public function setSecret($secret)
+    {
+        $this->secret = $secret;
+
+        return $this;
+    }
+
+    /**
+     * Get secret
+     *
+     * @return string
+     */
+    public function getSecret()
+    {
+        return $this->secret;
+    }
+
+    /**
+     * Set server
+     *
+     * @param integer $server
+     *
+     * @return Image
+     */
+    public function setServer($server)
+    {
+        $this->server = $server;
+
+        return $this;
+    }
+
+    /**
+     * Get server
+     *
+     * @return integer
+     */
+    public function getServer()
+    {
+        return $this->server;
+    }
+
+    /**
+     * Set farm
+     *
+     * @param integer $farm
+     *
+     * @return Image
+     */
+    public function setFarm($farm)
+    {
+        $this->farm = $farm;
+
+        return $this;
+    }
+
+    /**
+     * Get farm
+     *
+     * @return integer
+     */
+    public function getFarm()
+    {
+        return $this->farm;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Image
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 
     /**
      * Set location
      *
      * @param \Tasuk\GuessWhereBundle\Entity\Location $location
+     *
      * @return Image
      */
     public function setLocation(Location $location)
@@ -123,74 +229,5 @@ class Image
     public function getLocation()
     {
         return $this->location;
-    }
-
-    /**
-     * Set url
-     *
-     * @param string $url
-     * @return Image
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * Get url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->url;
-    }
-
-    /**
-     * Set url_m
-     *
-     * @param string $urlM
-     * @return Image
-     */
-    public function setUrlM($urlM)
-    {
-        $this->url_m = $urlM;
-
-        return $this;
-    }
-
-    /**
-     * Get url_m
-     *
-     * @return string
-     */
-    public function getUrlM()
-    {
-        return $this->url_m;
-    }
-
-    /**
-     * Set url_s
-     *
-     * @param string $urlS
-     * @return Image
-     */
-    public function setUrlS($urlS)
-    {
-        $this->url_s = $urlS;
-
-        return $this;
-    }
-
-    /**
-     * Get url_s
-     *
-     * @return string
-     */
-    public function getUrlS()
-    {
-        return $this->url_s;
     }
 }

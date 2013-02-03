@@ -58,6 +58,7 @@ class User
      * Set username
      *
      * @param string $username
+     *
      * @return User
      */
     public function setUsername($username)
@@ -81,6 +82,7 @@ class User
      * Add game
      *
      * @param \Tasuk\GuessWhereBundle\Entity\Game $game
+     *
      * @return User
      */
     public function addGame(Game $game)

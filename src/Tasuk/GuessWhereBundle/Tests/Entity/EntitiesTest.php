@@ -10,10 +10,15 @@ use Tasuk\GuessWhereBundle\Entity\Guess;
 use Tasuk\GuessWhereBundle\Entity\Location;
 
 /**
+ * Integration test for entities
+ *
  * @large
  */
 class EntitiesTest extends DatabaseTestCase
 {
+    /**
+     * @return Round
+     */
     protected function getRound()
     {
         $location = new Location;
@@ -24,7 +29,11 @@ class EntitiesTest extends DatabaseTestCase
         $image = new Image;
         $image
             ->setFlickrid(123)
-            ->setName("test image")
+            ->setTitle("test image")
+            ->setOwner("someone")
+            ->setSecret("secret")
+            ->setServer(1)
+            ->setFarm(100)
             ->setLocation($location);
 
         $round = new Round;
@@ -69,12 +78,18 @@ class EntitiesTest extends DatabaseTestCase
         $this->assertEquals(666, $location->getWoeid());
     }
 
+    /**
+     * Test getting by round works after adding by round
+     */
     public function testRoundFirstAddRoundFirst()
     {
         $this->addRoundFirst();
         $this->getRoundFirst();
     }
 
+    /**
+     * Test getting by round works after adding by game
+     */
     public function testRoundFirstAddGameFirst()
     {
         $this->addGameFirst();
@@ -93,6 +108,9 @@ class EntitiesTest extends DatabaseTestCase
     }
     */
 
+    /**
+     * Test getting by game works after adding by game
+     */
     public function testGameFirstAddGameFirst()
     {
         $this->addGameFirst();

@@ -72,6 +72,7 @@ class Game
      * Set time
      *
      * @param \DateTime $time
+     *
      * @return Game
      */
     public function setTime($time)
@@ -95,6 +96,7 @@ class Game
      * Set score
      *
      * @param integer $score
+     *
      * @return Game
      */
     public function setScore($score)
@@ -118,6 +120,7 @@ class Game
      * Set user
      *
      * @param \Tasuk\GuessWhereBundle\Entity\User $user
+     *
      * @return Game
      */
     public function setUser(User $user = null)
@@ -141,6 +144,7 @@ class Game
      * Add round
      *
      * @param \Tasuk\GuessWhereBundle\Entity\Round $round
+     *
      * @return Game
      */
     public function addRound(Round $round)

@@ -6,10 +6,15 @@ use Tasuk\GuessWhereBundle\Tests\ContainerAwareTestCase;
 use Tasuk\GuessWhereBundle\Client\Flickr;
 
 /**
+ * Test Flickr API
+ *
  * @large
  */
 class FlickrTest extends ContainerAwareTestCase
 {
+    /**
+     * Integration test for Flickr::getTopPlaces
+     */
     public function testGetTopPlaces()
     {
         $flickr = $this->getContainer()->get('guesswhere.flickr_client');
@@ -23,6 +28,9 @@ class FlickrTest extends ContainerAwareTestCase
         $this->assertContains('Ukraine', $places);
     }
 
+    /**
+     * Integration test for Flickr::getTopPhotos
+     */
     public function testGetTopPhotos()
     {
         $flickr = $this->getContainer()->get('guesswhere.flickr_client');

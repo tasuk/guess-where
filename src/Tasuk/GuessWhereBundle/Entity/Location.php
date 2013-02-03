@@ -31,6 +31,7 @@ class Location
      * Set woeid
      *
      * @param integer $woeid
+     *
      * @return Location
      */
     public function setWoeid($woeid)
@@ -54,6 +55,7 @@ class Location
      * Set country
      *
      * @param string $country
+     *
      * @return Location
      */
     public function setCountry($country)

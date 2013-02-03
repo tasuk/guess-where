@@ -4,6 +4,9 @@ namespace Tasuk\GuessWhereBundle\Client;
 
 use Guzzle\Http\ClientInterface;
 
+/**
+ * Communication with Yahoo API
+ */
 class Yahoo extends Client
 {
     /**

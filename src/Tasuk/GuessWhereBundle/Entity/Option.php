@@ -58,6 +58,7 @@ class Option
      * Set chosen
      *
      * @param boolean $chosen
+     *
      * @return Option
      */
     public function setChosen($chosen)
@@ -81,6 +82,7 @@ class Option
      * Set round
      *
      * @param \Tasuk\GuessWhereBundle\Entity\Round $round
+     *
      * @return Option
      */
     public function setRound(Round $round)
@@ -104,6 +106,7 @@ class Option
      * Set location
      *
      * @param \Tasuk\GuessWhereBundle\Entity\Location $location
+     *
      * @return Option
      */
     public function setLocation(Location $location)

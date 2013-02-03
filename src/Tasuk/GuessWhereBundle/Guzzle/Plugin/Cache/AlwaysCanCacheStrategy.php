@@ -7,7 +7,7 @@ use Guzzle\Http\Message\RequestInterface;
 use Guzzle\Http\Message\Response;
 
 /**
- * Default strategy used to determine of an HTTP request can be cached
+ * Ignore headers when determining whether an HTTP request can be cached
  */
 class AlwaysCanCacheStrategy implements CanCacheStrategyInterface
 {

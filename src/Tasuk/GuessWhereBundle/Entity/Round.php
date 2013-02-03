@@ -74,6 +74,7 @@ class Round
      * Set sequence
      *
      * @param integer $sequence
+     *
      * @return Round
      */
     public function setSequence($sequence)
@@ -97,6 +98,7 @@ class Round
      * Set game
      *
      * @param \Tasuk\GuessWhereBundle\Entity\Game $game
+     *
      * @return Round
      */
     public function setGame(Game $game)
@@ -120,6 +122,7 @@ class Round
      * Set image
      *
      * @param \Tasuk\GuessWhereBundle\Entity\Image $image
+     *
      * @return Round
      */
     public function setImage(Image $image)
@@ -143,6 +146,7 @@ class Round
      * Add option
      *
      * @param \Tasuk\GuessWhereBundle\Entity\Option $option
+     *
      * @return Round
      */
     public function addOption(Option $option)
