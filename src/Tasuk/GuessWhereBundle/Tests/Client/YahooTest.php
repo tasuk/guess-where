@@ -12,7 +12,7 @@ class YahooTest extends ContainerAwareTestCase
 {
     public function testGetPlace()
     {
-        $yahoo = $this->container->get('guesswhere.yahoo_client');
+        $yahoo = $this->getContainer()->get('guesswhere.yahoo_client');
         $simpleXml = $yahoo->getPlace(23424976);
         $this->assertEquals("Ukraine", $simpleXml->xml()->country);
     }

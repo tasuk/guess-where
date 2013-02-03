@@ -12,7 +12,7 @@ class FlickrTest extends ContainerAwareTestCase
 {
     public function testGetTopPlaces()
     {
-        $flickr = $this->container->get('guesswhere.flickr_client');
+        $flickr = $this->getContainer()->get('guesswhere.flickr_client');
         $simpleXml = $flickr->getTopPlaces();
 
         $places = array();

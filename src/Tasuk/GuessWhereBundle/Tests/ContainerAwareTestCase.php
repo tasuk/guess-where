@@ -4,18 +4,19 @@ namespace Tasuk\GuessWhereBundle\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-/**
- * @large
- */
-class ContainerAwareTestCase extends WebTestCase
+abstract class ContainerAwareTestCase extends WebTestCase
 {
-    protected $container;
+    protected $appKernel;
 
     public function setUp()
     {
-        $appKernel = static::createKernel();
-        $appKernel->boot();
-        $this->container = $appKernel->getContainer();
+        $kernel = static::createKernel();
+        $kernel->boot();
+        $this->appKernel = $kernel;
+    }
+
+    protected function getContainer()
+    {
+        return $this->appKernel->getContainer();
     }
 }
-
