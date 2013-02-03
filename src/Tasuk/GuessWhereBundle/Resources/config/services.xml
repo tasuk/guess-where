@@ -7,7 +7,8 @@
     <parameters>
         <parameter key="guzzle.cache.skip_revalidation.class">Guzzle\Plugin\Cache\SkipRevalidation</parameter>
         <parameter key="guesswhere.guzzle.cache.always.class">Tasuk\GuessWhereBundle\Guzzle\Plugin\Cache\AlwaysCanCacheStrategy</parameter>
-        <parameter key="guesswhere.yahoo_api.class">Tasuk\GuessWhereBundle\YahooAPI</parameter>
+        <parameter key="guesswhere.yahoo_client.class">Tasuk\GuessWhereBundle\Client\Yahoo</parameter>
+        <parameter key="guesswhere.flickr_client.class">Tasuk\GuessWhereBundle\Client\Flickr</parameter>
     </parameters>
 
     <services>
@@ -22,17 +23,23 @@
             </argument>
         </service>
 
-        <service id="guesswhere.yahoo.client" class="%guzzle.client.class%">
+        <service id="guesswhere.client" class="%guzzle.client.class%">
             <tag name="guzzle.client"/>
-            <argument>http://where.yahooapis.com/v1/place/</argument>
             <call method="addSubscriber">
                 <argument type="service" id="guesswhere.guzzle.cache"/>
             </call>
         </service>
 
-        <service id="guesswhere.yahoo_api" class="%guesswhere.yahoo_api.class%">
-            <argument type="service" id="guesswhere.yahoo.client" />
+        <service id="guesswhere.yahoo_client" class="%guesswhere.yahoo_client.class%">
+            <argument type="service" id="guesswhere.client" />
+            <argument>http://where.yahooapis.com/v1/place/</argument>
             <argument>%guesswhere.yahoo_api_key%</argument>
+        </service>
+
+        <service id="guesswhere.flickr_client" class="%guesswhere.flickr_client.class%">
+            <argument type="service" id="guesswhere.client" />
+            <argument>http://api.flickr.com/services/rest/</argument>
+            <argument>%guesswhere.flickr_api_key%</argument>
         </service>
     </services>
 </container>
