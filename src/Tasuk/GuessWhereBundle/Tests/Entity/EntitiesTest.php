@@ -1,12 +1,19 @@
 <?php
 
-//namespace Tasuk\GuessWhereBundle\Tests\Entity;
-namespace Tasuk\GuessWhereBundle\Entity;
+namespace Tasuk\GuessWhereBundle\Tests\Entity;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
+use Tasuk\GuessWhereBundle\Entity\Game;
+use Tasuk\GuessWhereBundle\Entity\Round;
+use Tasuk\GuessWhereBundle\Entity\Image;
+use Tasuk\GuessWhereBundle\Entity\Guess;
+use Tasuk\GuessWhereBundle\Entity\Location;
 
+/**
+ * @large
+ */
 class EntitiesTest extends WebTestCase
 {
     private $em;
