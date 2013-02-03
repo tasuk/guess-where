@@ -33,13 +33,13 @@
         <service id="guesswhere.yahoo_client" class="%guesswhere.yahoo_client.class%">
             <argument type="service" id="guesswhere.client" />
             <argument>http://where.yahooapis.com/v1/place/</argument>
-            <argument>%guesswhere.yahoo_api_key%</argument>
+            <argument>%yahoo.api_key%</argument>
         </service>
 
         <service id="guesswhere.flickr_client" class="%guesswhere.flickr_client.class%">
             <argument type="service" id="guesswhere.client" />
             <argument>http://api.flickr.com/services/rest/</argument>
-            <argument>%guesswhere.flickr_api_key%</argument>
+            <argument>%flickr.api_key%</argument>
         </service>
     </services>
 </container>
