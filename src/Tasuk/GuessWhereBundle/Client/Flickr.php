@@ -27,7 +27,8 @@ class Flickr extends Client
         $request->getQuery()
             ->set('api_key', $this->apiKey)
             ->set('method', 'flickr.places.getTopPlacesList')
-            ->set('place_type_id', $type);
+            ->set('place_type_id', $type)
+            ->set('lang', 'en');
 
         return $request->send();
     }
