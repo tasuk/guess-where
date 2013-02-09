@@ -2,25 +2,21 @@
 
 namespace Tasuk\GuessWhereBundle\Client;
 
-use Guzzle\Http\ClientInterface;
+use Tasuk\GuessWhereBundle\Factory\LocationServiceInterface;
 
 /**
  * Communication with Yahoo API
  */
-class Yahoo extends Client
+class Yahoo extends Client implements LocationServiceInterface
 {
     /**
-     * Get location details from WOEID
-     *
-     * @param string $woeid Yahoo Location WOEID
-     *
-     * @return Guzzle\Http\Message\Response
+     * {@inheritdoc}
      */
-    public function getPlace($woeid)
+    public function getCountryCode($woeid)
     {
         $request = $this->guzzleClient->get($woeid);
         $request->getQuery()->set('appid', $this->apiKey);
 
-        return $request->send();
+        return $request->send()->xml()->country['code'];
     }
 }

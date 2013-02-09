@@ -13,12 +13,14 @@ use Tasuk\GuessWhereBundle\Client\Yahoo;
 class YahooTest extends ContainerAwareTestCase
 {
     /**
-     * Integration test for Yahoo::getPlace
+     * Integration test for Yahoo::getCountryCode
      */
-    public function testGetPlace()
+    public function testGetCountryCode()
     {
-        $yahoo = $this->getContainer()->get('guesswhere.yahoo_client');
-        $response = $yahoo->getPlace(23424976);
-        $this->assertEquals('Ukraine', $response->xml()->country);
+        $countryCode = $this->getContainer()
+            ->get('guesswhere.yahoo_client')
+            ->getCountryCode(23424976);
+
+        $this->assertEquals('UA', $countryCode);
     }
 }
