@@ -30,13 +30,7 @@ class ImageTest extends DatabaseTestCase
         $this->getEntityManager()->persist($image);
         $this->getEntityManager()->flush();
 
-        $factory = new ImageFactory(
-            $this->getEntityManager(),
-            $this->getLocationFactory()
-        );
-        $this->assertEquals('HL', $factory->get(
-            $this->getDetails()
-        )->getLocation()->getCountry());
+        $this->checkReturned($this->getLocationFactory());
     }
 
     /**
@@ -44,8 +38,6 @@ class ImageTest extends DatabaseTestCase
      */
     public function testGetFromService()
     {
-        $em = $this->getEntityManager();
-
         $location = $this->getLocation();
         $locationFactory = $this->getLocationFactory();
         $locationFactory->expects($this->once())
@@ -53,18 +45,31 @@ class ImageTest extends DatabaseTestCase
             ->with(666)
             ->will($this->returnValue($location));
 
-        $factory = new ImageFactory($em, $locationFactory);
+        $this->checkReturned($locationFactory);
+
+        // check that location was saved
+        $locationFromDb = $this->getEntityManager()
+            ->getRepository('TasukGuessWhereBundle:Location')
+            ->find(666);
+        $this->assertEquals($location, $locationFromDb);
+    }
+
+    /**
+     * Check that returned image is ok
+     *
+     * @param Tasuk\GuessWhereBundle\Factory\Location $locationFactory
+     */
+    protected function checkReturned($locationFactory)
+    {
+        $factory = new ImageFactory(
+            $this->getEntityManager(),
+            $locationFactory
+        );
         $image = $factory->get($this->getDetails());
 
         // check returned location
         $this->assertEquals(42, $image->getFlickrid());
         $this->assertEquals('HL', $image->getLocation()->getCountry());
-
-        // check that location was saved
-        $locationFromDb = $em
-            ->getRepository('TasukGuessWhereBundle:Location')
-            ->find(666);
-        $this->assertEquals($location, $locationFromDb);
     }
 
     /**
