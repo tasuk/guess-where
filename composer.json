@@ -16,8 +16,11 @@
         "sensio/distribution-bundle": "2.1.*",
         "sensio/framework-extra-bundle": "2.1.*",
         "sensio/generator-bundle": "2.1.*",
-        "jms/security-extra-bundle": "1.2.*",
-        "jms/di-extra-bundle": "1.1.*",
+        "jms/security-extra-bundle": "1.4.*@dev",
+        "jms/di-extra-bundle": "1.3.*@dev",
+        "jms/serializer-bundle": "1.0.*@dev",
+        "jms/serializer": "1.0.*@dev",
+        "friendsofsymfony/rest-bundle": "dev-jms_serlializer_1_0",
         "misd/guzzle-bundle": "dev-master",
         "kriswallsmith/assetic": "1.1.*@dev"
     },
