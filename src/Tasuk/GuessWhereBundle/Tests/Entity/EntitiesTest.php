@@ -3,11 +3,7 @@
 namespace Tasuk\GuessWhereBundle\Tests\Entity;
 
 use Tasuk\GuessWhereBundle\Tests\DatabaseTestCase;
-use Tasuk\GuessWhereBundle\Entity\Game;
-use Tasuk\GuessWhereBundle\Entity\Round;
-use Tasuk\GuessWhereBundle\Entity\Image;
-use Tasuk\GuessWhereBundle\Entity\Guess;
-use Tasuk\GuessWhereBundle\Entity\Location;
+use Tasuk\GuessWhereBundle\Entity;
 
 /**
  * Integration test for entities
@@ -17,16 +13,16 @@ use Tasuk\GuessWhereBundle\Entity\Location;
 class EntitiesTest extends DatabaseTestCase
 {
     /**
-     * @return Round
+     * @return Entity\Round
      */
     protected function getRound()
     {
-        $location = new Location;
+        $location = new Entity\Location;
         $location
             ->setWoeid(666)
             ->setCountry("hell");
 
-        $image = new Image;
+        $image = new Entity\Image;
         $image
             ->setFlickrid(123)
             ->setTitle("test image")
@@ -36,7 +32,7 @@ class EntitiesTest extends DatabaseTestCase
             ->setFarm(100)
             ->setLocation($location);
 
-        $round = new Round;
+        $round = new Entity\Round;
         $round
             ->setSequence(1)
             ->setImage($image);
@@ -47,14 +43,14 @@ class EntitiesTest extends DatabaseTestCase
     protected function addRoundFirst()
     {
         $round = $this->getRound();
-        $round->setGame(new Game);
+        $round->setGame(new Entity\Game);
         $this->getEntityManager()->persist($round);
         $this->getEntityManager()->flush();
     }
 
     protected function addGameFirst()
     {
-        $game = new Game;
+        $game = new Entity\Game;
         $game->addRound($this->getRound());
         $this->getEntityManager()->persist($game);
         $this->getEntityManager()->flush();
