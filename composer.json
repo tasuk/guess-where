@@ -21,6 +21,7 @@
         "jms/serializer-bundle": "1.0.*@dev",
         "jms/serializer": "1.0.*@dev",
         "friendsofsymfony/rest-bundle": "dev-jms_serlializer_1_0",
+        "fsc/hateoas-bundle": "0.3.*@dev",
         "misd/guzzle-bundle": "dev-master",
         "kriswallsmith/assetic": "1.1.*@dev"
     },
@@ -41,6 +42,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
         ]
     },
+    "minimum-stability": "dev",
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web"
