@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * Game
  *
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="games")
  */
 class Game
@@ -75,7 +76,7 @@ class Game
      *
      * @return Game
      */
-    public function setTime($time)
+    protected function setTime($time)
     {
         $this->time = $time;
 
@@ -173,5 +174,14 @@ class Game
     public function getRounds()
     {
         return $this->rounds;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function updateTimestamp()
+    {
+        $this->setTime(new \Datetime);
     }
 }
