@@ -1,7 +1,6 @@
-tasuk_guess_where:
-    resource: "@TasukGuessWhereBundle/Controller/"
-    type:     annotation
-    prefix:   /
+games:
+    type:     rest
+    resource: Tasuk\GuessWhereBundle\Controller\GamesController
 
 # Internal routing configuration to handle ESI
 # ****** WARNING ******
