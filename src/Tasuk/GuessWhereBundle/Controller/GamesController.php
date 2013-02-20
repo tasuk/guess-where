@@ -2,9 +2,11 @@
 
 namespace Tasuk\GuessWhereBundle\Controller;
 
+use Tasuk\GuessWhereBundle\Entity\Game;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\Rest\Util\Codes;
-use Tasuk\GuessWhereBundle\Entity\Game;
 
 /**
  * Games controller
@@ -45,7 +47,7 @@ class GamesController extends FOSRestController
         return $this->view(array(
             'session' => $session->getId(),
         ), $statusCode, array(
-            'Location' => $gameId,
+            'Location' => '/games/' . $gameId,
         ));
     }
 
@@ -85,6 +87,11 @@ class GamesController extends FOSRestController
      */
     public function putGameRoundGuessAction($gameId, $roundSequence, $woeid)
     {
+        $session = $this->getRequest()->getSession();
+        if ((int) $gameId !== $session->get('game_id')) {
+            throw new AccessDeniedHttpException('You are not authorized to guess on this game.');
+        }
+
         return $this->view(null, Codes::HTTP_NOT_IMPLEMENTED);
     }
 }

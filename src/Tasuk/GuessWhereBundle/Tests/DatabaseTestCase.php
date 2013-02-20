@@ -17,6 +17,14 @@ abstract class DatabaseTestCase extends ContainerAwareTestCase
     {
         parent::setUp();
 
+        $this->setUpDb();
+    }
+
+    /**
+     * Set up database
+     */
+    protected function setUpDb()
+    {
         $application = new Application($this->appKernel);
         $application->setAutoExit(false);
         $this->runConsole($application, "doctrine:schema:drop", array("--force" => true));
@@ -35,10 +43,8 @@ abstract class DatabaseTestCase extends ContainerAwareTestCase
     protected function runConsole(
         Application $application,
         $command,
-        array $options = array()
-    )
+        array $options = array())
     {
-        $options["-e"] = "test";
         $options["-q"] = null;
         $options = array_merge($options, array('command' => $command));
 

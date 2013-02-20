@@ -16,9 +16,9 @@ swiftmailer:
 # Doctrine Configuration
 doctrine:
     dbal:
-        driver:   "pdo_sqlite"
-        path:     ":memory:"
-        memory:   true
+        driver: "pdo_sqlite"
+        path:   ":memory:"
+        memory: true
     orm:
         auto_generate_proxy_classes: true
         auto_mapping: true

@@ -1,0 +1,10 @@
+imports:
+    - { resource: config_test.yml }
+
+# Symfony client deletes the in-memory sqlite,
+# hence need to use file-based one.
+doctrine:
+    dbal:
+        driver: "pdo_sqlite"
+        path:   "%kernel.cache_dir%/test.db"
+        memory: false
