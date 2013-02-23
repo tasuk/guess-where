@@ -13,7 +13,7 @@ env:
         - secure: "SHFXCf3NBp89OHucvY8HOx0xUFwkpXh262+YhE/hjb06O5dM1/GZf6euM6Ua\nePtGzSe3INqaSaZJmEPdw8yVaAU9ufSGe9PvGdYzRNwkT/8D0/c9JcNsBA/I\n0rpJpjQKvIm4JA7EzTospWf1U0pU/Am5I4PgINYNobfO0akRhUw="
 
 before_script:
-    - mv app/config/parameters.yml{.template,}
+    - mv app/config/parameters.yml{.dist,}
     - sed -i "s/{{yahoo_api_key}}/$YAHOO_API_KEY/" app/config/parameters.yml
     - sed -i "s/{{flickr_api_key}}/$FLICKR_API_KEY/" app/config/parameters.yml
     - curl -s http://getcomposer.org/installer | php
