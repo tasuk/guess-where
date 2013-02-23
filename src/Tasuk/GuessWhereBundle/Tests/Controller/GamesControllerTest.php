@@ -37,9 +37,7 @@ class GamesControllerTest extends DatabaseTestCase
         $this->assertTrue($response->headers->contains(
             'Content-Type', 'application/json'
         ));
-        $this->assertTrue($response->headers->contains(
-            'Location', '/games/1'
-        ));
+        $this->assertContains('/games/1', $response->headers->get('Location'));
 
         return $response;
     }
