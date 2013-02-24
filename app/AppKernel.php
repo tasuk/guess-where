@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Misd\GuzzleBundle\MisdGuzzleBundle(),
+            new FSC\HateoasBundle\FSCHateoasBundle(),
             new Tasuk\GuessWhereBundle\TasukGuessWhereBundle(),
             new FOS\RestBundle\FOSRestBundle(),
         );

@@ -3,16 +3,30 @@
 namespace Tasuk\GuessWhereBundle\Controller;
 
 use Tasuk\GuessWhereBundle\Entity\Game;
+use Tasuk\GuessWhereBundle\Model\Root;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\Rest\Util\Codes;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
  * Games controller
  */
 class GamesController extends FOSRestController
 {
+    /**
+     * Root node
+     *
+     * @return FOS\RestBundle\View\View
+     */
+    public function getAction()
+    {
+        return $this->view(new Root);
+    }
+
     /**
      * Get games by parameters
      *
