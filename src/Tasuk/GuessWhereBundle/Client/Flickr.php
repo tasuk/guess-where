@@ -2,8 +2,6 @@
 
 namespace Tasuk\GuessWhereBundle\Client;
 
-use Guzzle\Http\ClientInterface;
-
 /**
  * Communication with Flickr API
  */

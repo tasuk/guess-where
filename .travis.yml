@@ -18,6 +18,7 @@ before_script:
     - sed -i "s/{{flickr_api_key}}/$FLICKR_API_KEY/" app/config/parameters.yml
     - curl -s http://getcomposer.org/installer | php
     - php composer.phar install --dev --no-interaction
-    - git clone git://github.com/opensky/Symfony2-coding-standard.git vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Symfony2/
 
-script: phpunit -c app && vendor/bin/phpcs --standard=Symfony2 src/Tasuk/GuessWhereBundle/
+script:
+    - phpunit -c app
+    - vendor/bin/php-cs-fixer fix --verbose --config=sf21 --dry-run .
