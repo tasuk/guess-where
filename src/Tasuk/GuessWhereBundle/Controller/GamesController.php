@@ -58,13 +58,9 @@ class GamesController extends FOSRestController
             $statusCode = Codes::HTTP_CREATED;
         }
 
-        return $this->view(array(
-            'session' => $session->getId(),
-        ), $statusCode, array(
-            'Location' => $this->get('router')->generate(
-                'get_game', array('gameId' => $gameId), true
-            ),
-        ));
+        return $this->redirectView($this->get('router')->generate(
+            'get_game', array('gameId' => $gameId), true
+        ), $statusCode);
     }
 
     /**
