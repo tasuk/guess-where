@@ -84,5 +84,10 @@ fos_rest:
             - html
         fallback_format: json
 
+fsc_hateoas:
+    json:
+        links_key: _links
+        relations_key: _embedded
+
 sensio_framework_extra:
     view: { annotations: false }
