@@ -4,6 +4,8 @@ namespace Tasuk\GuessWhereBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use FSC\HateoasBundle\Annotation as Hateoas;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Game
@@ -11,6 +13,9 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="games")
+ *
+ * @Serializer\XmlRoot("game")
+ * @Hateoas\Relation("self", href = @Hateoas\Route("get_game", parameters = { "gameId" = ".id" }))
  */
 class Game
 {

@@ -68,7 +68,11 @@ class GamesController extends FOSRestController
      */
     public function getGameAction($gameId = null)
     {
-        return $this->view(null, Codes::HTTP_NOT_IMPLEMENTED);
+        $game = $this
+            ->getDoctrine()
+            ->getRepository('TasukGuessWhereBundle:Game')
+            ->find($gameId);
+        return $this->view($game);
     }
 
     /**

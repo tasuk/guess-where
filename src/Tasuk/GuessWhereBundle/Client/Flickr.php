@@ -2,10 +2,12 @@
 
 namespace Tasuk\GuessWhereBundle\Client;
 
+use Tasuk\GuessWhereBundle\Factory\ImageServiceInterface;
+
 /**
  * Communication with Flickr API
  */
-class Flickr extends Client
+class Flickr extends Client implements ImageServiceInterface
 {
     const PLACE_TYPE_REGION = 8;
     const PLACE_TYPE_COUNTRY = 12;
@@ -40,7 +42,7 @@ class Flickr extends Client
      *
      * @return Guzzle\Http\Message\Response
      */
-    public function getTopPhotos($woeid, $maxAge, $limit)
+    public function getTopPhotos($woeid, $maxAge = "1 year", $limit = 100)
     {
         $today = strtotime(date("Y-m-d"));
         $minUploadDate = strtotime('-' . $maxAge, $today);
